@@ -1,28 +1,29 @@
-input.onButtonPressed(Button.A, function () {
-    current_character_index += 1
-    basic.showString("" + (list[current_character_index]))
-})
-input.onButtonPressed(Button.B, function () {
-    basic.showString(name)
-    basic.clearScreen()
-    name = "" + name + list[current_character_index]
-    current_character_index = 0
-    basic.showString("" + (list[current_character_index]))
-})
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+input.onPinPressed(TouchPin.P0, function () {
     basic.showString(name)
     basic.showString(name)
     basic.showString(name)
     name = ""
-    basic.showString("" + (list[current_character_index]))
+    basic.showString("" + (alphabet[current_character_index]))
 })
-let list: string[] = []
+input.onButtonPressed(Button.A, function () {
+    if (current_character_index < 26) {
+        current_character_index += 1
+    } else {
+        current_character_index = 0
+    }
+    basic.showString(alphabet.charAt(current_character_index))
+})
+input.onButtonPressed(Button.B, function () {
+    basic.clearScreen()
+    basic.pause(100)
+    name = "" + name + alphabet.charAt(current_character_index)
+    current_character_index = 0
+    basic.showString("" + (alphabet[current_character_index]))
+})
+let alphabet = ""
 let name = ""
 let current_character_index = 0
 current_character_index = 0
 name = ""
-list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-basic.showString("" + (list[current_character_index]))
-basic.forever(function () {
-	
-})
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+basic.showString(alphabet.charAt(current_character_index))
